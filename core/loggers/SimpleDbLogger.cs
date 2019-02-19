@@ -84,8 +84,11 @@ namespace shivs.utilities.core.loggers {
         }
         lines.Add("ConnectionId: " + r.ConnectionId);
         lines.Add("Time: " + r.TimeExecuted.ToShortTimeString());
-        lines.Add("ConnectionString: " + r.Properties.ConnectionString);
         lines.Add("Action: " + r.Properties.Action);
+        if (r.Properties.Action == "Open") {
+          lines.Add("ConnectionString: " + r.Properties.ConnectionString);
+        }
+
         if (null != r.Properties.CommandText) {
           lines.Add("CommandText: " + r.Properties.CommandText);
         }
@@ -105,15 +108,15 @@ namespace shivs.utilities.core.loggers {
           if (null != r.Properties.Value) {
             lines.Add("Value: " + r.Properties.Value);
           }
-          if (r.Properties.NumRecords.HasValue) {
-            lines.Add("NumRecords: " + r.Properties.NumRecords.Value);
-          }
-          if (r.Properties.NumFields.HasValue) {
-            lines.Add("NumFields: " + r.Properties.NumFields.Value);
-          }
-          if (r.Properties.Depth.HasValue) {
-            lines.Add("Depth: " + r.Properties.Depth.Value);
-          }
+          //if (r.Properties.NumRecords.HasValue) {
+          //  lines.Add("NumRecords: " + r.Properties.NumRecords.Value);
+          //}
+          //if (r.Properties.NumFields.HasValue) {
+          //  lines.Add("NumFields: " + r.Properties.NumFields.Value);
+          //}
+          //if (r.Properties.Depth.HasValue) {
+          //  lines.Add("Depth: " + r.Properties.Depth.Value);
+          //}
         }
         
         lines.Add(" ");
