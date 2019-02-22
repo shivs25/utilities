@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace shivs.utilities.core.connections {
-  public class LoggedConnection : IDbConnection, ILoggedConnection {
+  public class LoggedConnection : IDbConnection {
 
 
     protected IDbConnection _connection;
@@ -69,16 +69,6 @@ namespace shivs.utilities.core.connections {
         throw ex;
       }
      
-    }
-
-    public bool IsNpgSqlFunction() {
-      return this._connection is Npgsql.NpgsqlConnection;
-    }
-
-    public TextReader BeginTextExport(string command) {
-      Npgsql.NpgsqlConnection npgsqlConn = (Npgsql.NpgsqlConnection)this._connection;
-
-      return npgsqlConn.BeginTextExport(command);
     }
 
     public LoggedConnection(IDbConnection connection, IDbLogger logger) {

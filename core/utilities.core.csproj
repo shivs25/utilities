@@ -53,7 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="connections\ILoggedConnection.cs" />
+    <Compile Include="ITextExportConnection.cs" />
     <Compile Include="loggers\SimpleDbLogger.cs" />
     <Compile Include="models\ConnectionProperties.cs" />
     <Compile Include="connections\LoggedCommand.cs" />
