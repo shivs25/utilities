@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace shivs.utilities.core.connections {
-  public class LoggedConnection : IDbConnection {
+  public class LoggedConnection : IDbConnection, ILoggedConnection {
 
 
     protected IDbConnection _connection;
@@ -68,6 +69,16 @@ namespace shivs.utilities.core.connections {
         throw ex;
       }
      
+    }
+
+    public bool IsNpgSqlFunction() {
+      return this._connection is Npgsql.NpgsqlConnection;
+    }
+
+    public TextReader BeginTextExport(string command) {
+      Npgsql.NpgsqlConnection npgsqlConn = (Npgsql.NpgsqlConnection)this._connection;
+
+      return npgsqlConn.BeginTextExport(command);
     }
 
     public LoggedConnection(IDbConnection connection, IDbLogger logger) {
