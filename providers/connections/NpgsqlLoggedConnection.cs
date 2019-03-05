@@ -20,6 +20,18 @@ namespace shivs.utilities.providers.connections {
       }
     }
 
+
+    public TextWriter beginTextImport(string command) {
+      if (this._connection is Npgsql.NpgsqlConnection) {
+        return ((Npgsql.NpgsqlConnection)_connection).BeginTextImport(command);
+      }
+      else {
+        throw new NotImplementedException();
+      }
+    }
+
+
+
     protected override void clearPool() {
      if (this._connection is Npgsql.NpgsqlConnection) {
         Npgsql.NpgsqlConnection.ClearPool((Npgsql.NpgsqlConnection)this._connection);

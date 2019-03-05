@@ -9,6 +9,6 @@ namespace shivs.utilities.core.connections {
   public interface ITextExportConnection {
 
     TextReader beginTextExport(string command);
-
+    TextWriter beginTextImport(string command);
   }
 }
